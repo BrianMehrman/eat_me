@@ -1,12 +1,12 @@
-class FoodCollectionController < ActionController:Base
+class FoodCollectionController < ActionController::Base
   
   def new
     @foods = Food.all
   end
   
   def create
-    if params[:commit] == 'Menu'
-      destination_type = Menu
+    if params[:commit] == 'Create Meal'
+      destination_type = Meal
     else
       destination_type = Recipe
     end

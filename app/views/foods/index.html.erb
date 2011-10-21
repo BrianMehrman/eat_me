@@ -1,5 +1,5 @@
 <h1>All the Food</h1>
-<%= form_tag edit_multiple_foods_path do %>
+
 <table>
   
   <thead>
@@ -26,9 +26,7 @@
   </tbody>
 </table>
 
-<p><%= submit_tag "Create Recipe" %> | <%= submit_tag "Create Meal" %></p>
-
-<% end %>
+<p><%= link_to "add collection", food_collection_new_path %></p>
 <br />
 
 <p><%= link_to 'New Food', new_food_path %></p>

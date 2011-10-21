@@ -7,6 +7,9 @@ EatMe::Application.routes.draw do
     end
   end
   
+  get "food_collection/new", :action=>'new', :controller=>'food_collection'
+  post "food_collection",  :action=>'create', :controller=>'food_collection'
+  
   resources :recipes       
     
   resources :meals
