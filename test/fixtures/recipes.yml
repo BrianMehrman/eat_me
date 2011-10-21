@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  directions: MyString
+  prep_time: 1
+  cook_time: 1
+
+two:
+  name: MyString
+  directions: MyString
+  prep_time: 1
+  cook_time: 1

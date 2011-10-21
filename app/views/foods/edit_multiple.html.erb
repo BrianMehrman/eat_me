@@ -1,0 +1,13 @@
+
+<%= form_for :food, :url => update_multiple_foods_path, :html=>{:method => :put} do |form| %>
+	<ul>
+		<% for food in @foods %>	
+		<li>
+			<%= h food.name %>
+			<%= hidden_field_tag "food_ids[]", food.id %>
+		</li>
+		<% end %>
+	</ul>
+
+	<p><%= submit_tag "Submit" %></p>
+<% end %>

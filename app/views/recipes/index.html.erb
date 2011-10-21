@@ -1,0 +1,18 @@
+<h1>Listing recipes</h1>
+
+<ul>
+	<li>
+	<% @recipes.each do |recipe| %>
+  
+ 		<p>
+			<%= link_to recipe.name, show_recipe_url(recipe) %> <br />
+			<%= reciepe.prep_time %> | <%= recipe.cook_time %> 
+		</p>
+	
+		<%= link_to 'Show', recipe %> | <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %>
+  
+	<% end %>
+	</li>
+	<%= link_to 'New Recipe', new_recipe_path %>
+</ul>
+

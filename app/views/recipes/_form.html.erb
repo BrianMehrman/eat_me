@@ -1,0 +1,50 @@
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :directions %><br />
+    <%= f.text_field :directions %>
+  </div>
+  <div class="field">
+    <%= f.label :prep_time %><br />
+    <%= f.number_field :prep_time %>
+  </div>
+  <div class="field">
+    <%= f.label :cook_time %><br />
+    <%= f.number_field :cook_time %>
+  </div>
+
+  <!-- Ingredients for recipe -->
+  <ul>
+	<% for ingredient in @recipe.ingredients %>	
+	<li>
+		<p>
+			<%= h ingredient.food.name %>
+		</p>
+		<p>
+			<%= f.label "Quantity:" %>
+			<%= f.number_field ingredient.measurement %>
+		</p>		
+	</li>
+	<%= link_to "Add an ingredient", '' %>
+	<% end %>
+  </ul>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

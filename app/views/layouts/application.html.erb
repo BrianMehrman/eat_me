@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>EatMe</title>
+	  <%= stylesheet_link_tag    "application" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="container">
+		<header id="header" class="box">
+			<h1>Eat Me App</h1>
+			<nav id="nav">
+				<ul>
+					<li><%= link_to 'Food', foods_url %></li>
+					<li><%= link_to 'Recipes', recipes_url %></li>
+					<li><%= link_to 'Meals', meals_url %></li>
+					<li><%= link_to 'Users', users_url %></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="content" class="box">
+			<%= yield %>
+		</div>
+		<footer id="footer" class="box">
+			<p>Running on Rails</p>
+		</footer>
+	</body>
+</html>

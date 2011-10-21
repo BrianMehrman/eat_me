@@ -1,0 +1,34 @@
+<h1>All the Food</h1>
+<%= form_tag edit_multiple_foods_path do %>
+<table>
+  
+  <thead>
+	<tr>
+		<th></th>
+	    <th>Name</th>
+	    <th>Recipe</th>
+	    <th>Nutrition</th>
+	    <th></th>
+  	</tr>
+  </thead>
+  <tbody>
+	 <% @foods.each do |food| %>
+  	 <tr>
+		<td><%= check_box_tag "food_ids[]", food.id %></td>
+	    <td><%= food.name %></td>
+		<td><%= has_recipe?(food)? 'Yes' : 'No' %></td>
+		<td>View Nutrition Here</td>
+	    <td><%= link_to 'Show', food %></td>
+	    <td><%= link_to 'Edit', edit_food_path(food) %></td>
+	    <td><%= link_to 'Destroy', food, confirm: 'Are you sure?', method: :delete %></td>
+	 </tr>
+     <% end %>
+  </tbody>
+</table>
+
+<p><%= submit_tag "Create Recipe" %> | <%= submit_tag "Create Meal" %></p>
+
+<% end %>
+<br />
+
+<p><%= link_to 'New Food', new_food_path %></p>
