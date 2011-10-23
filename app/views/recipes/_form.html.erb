@@ -28,22 +28,35 @@
     <%= f.number_field :cook_time %>
   </div>
 
-  <!-- Ingredients for recipe -->
-  <ul>
-	<% for ingredient in @recipe.ingredients %>	
-	<li>
-		<p>
-			<%= h ingredient.food.name %>
-		</p>
-		<p>
-			<%= f.label "Quantity:" %>
-			<%= f.number_field ingredient.measurement %>
-		</p>		
-	</li>
-	<%= link_to "Add an ingredient", '' %>
-	<% end %>
-  </ul>
-
+  <!-- Ingredients for recipe	
+	TODO: create interface for adding ingredients to a recipe ( i think this should be an ajax call to a json route in the recipe controller )
+	-->
+  <table>
+	<h2>Ingredients</h2>
+  	<thead>
+  		<tr>
+			<td></td>
+			<td><%= f.label "Quantity:" %></td>
+  		</tr>
+  	</thead>
+	<tbody>
+		<% for ingredient in @recipe.ingredients %>
+		<tr>
+			<td>
+				<%= h ingredient.food.name %>
+			</td>
+		
+			<td>
+				<%= number_field_tag :measurement, :value => ingredient.measurement %>
+			</td>
+		</tr>
+		<% end %>
+		
+	</tbody>
+	
+  </table>
+  <%= link_to 'Add Ingredient', '' %>
+		
   <div class="actions">
     <%= f.submit %>
   </div>

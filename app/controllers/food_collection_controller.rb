@@ -12,7 +12,7 @@ class FoodCollectionController < ActionController::Base
     end
     @menu_or_recipe = FoodCollection.new(params[:food_ids],destination_type)
     
-    redirect_to @menu_or_recipe
+    redirect_to :controller=>'recipes',:action=>'new', :food_ids => params[:food_ids]
     
   end
   

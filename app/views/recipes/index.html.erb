@@ -1,18 +1,16 @@
 <h1>Listing recipes</h1>
 
 <ul>
-	<li>
 	<% @recipes.each do |recipe| %>
-  
+	<li>
  		<p>
-			<%= link_to recipe.name, show_recipe_url(recipe) %> <br />
-			<%= reciepe.prep_time %> | <%= recipe.cook_time %> 
+			<%= link_to recipe.name, recipe_url(recipe) %> <br />
+			<%= recipe.prep_time.present? ? recipe.prep_time : "None"  %> | <%= recipe.cook_time.present? ? recipe.cook_time : "None" %> 
 		</p>
-	
 		<%= link_to 'Show', recipe %> | <%= link_to 'Edit', edit_recipe_path(recipe) %> | <%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %>
-  
-	<% end %>
 	</li>
+	<% end %>
+  
 	<%= link_to 'New Recipe', new_recipe_path %>
 </ul>
 

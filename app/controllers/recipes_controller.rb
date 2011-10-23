@@ -25,7 +25,11 @@ class RecipesController < ApplicationController
   # GET /recipes/new.json
   def new
     @recipe = Recipe.new
-    food = Food.find(params[:food_ids])
+    
+    foods = Food.find(params[:food_ids])
+    
+    foods.each{ |f| @recipe.ingredients.build(:food_id=>f.id) } if foods.size > 0
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @recipe }
