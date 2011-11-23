@@ -40,23 +40,30 @@
   		</tr>
   	</thead>
 	<tbody>
-		<% for ingredient in @recipe.ingredients %>
-		<tr>
-			<td>
-				<%= h ingredient.food.name %>
-			</td>
-		
-			<td>
-				<%= number_field_tag :measurement, :value => ingredient.measurement %>
-			</td>
-		</tr>
+		<%= f.fields_for :ingredients do |ingredient| %>
+			<%= render 'ingredients/ingredient_form', :ingredient_form => ingredient %>
 		<% end %>
-		
+		<script id="empty_ingredient_form">
+			<%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>
+				<%= render 'ingredients/ingredient_form', :ingredient_form => ingredient %>
+			<% end %>
+		</script>
+		<!-- <%# for ingredient in @recipe.ingredients %>
+			<tr>
+				<td>
+					<%#= h ingredient.food.name %>
+				</td>
+			
+				<td>
+					<%#= number_field_tag :measurement, :value => ingredient.measurement %>
+				</td>
+			</tr>
+			<%# end %>
+			 -->
 	</tbody>
 	
   </table>
-  <%= link_to 'Add Ingredient', '' %>
-		
+  		
   <div class="actions">
     <%= f.submit %>
   </div>

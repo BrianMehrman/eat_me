@@ -1,5 +1,5 @@
 <h1>All the Food</h1>
-
+<%= form_tag food_collection_path do %>
 <table>
   
   <thead>
@@ -14,7 +14,7 @@
   <tbody>
 	 <% @foods.each do |food| %>
   	 <tr>
-		<!-- <td><%= check_box_tag "food_ids[]", food.id %></td> -->
+		<td><%= check_box_tag "food_ids[]", food.id %></td>
 	    <td><%= food.name %></td>
 		<td><%= has_recipe?(food)? 'Yes' : 'No' %></td>
 		<td>View Nutrition Here</td>
@@ -26,7 +26,9 @@
   </tbody>
 </table>
 
-<p><%= link_to "add collection", food_collection_new_path %></p>
+<p><%= submit_tag "Create Recipe" %> | <%= submit_tag "Create Meal" %></p>
+
+<% end %>
 <br />
 
 <p><%= link_to 'New Food', new_food_path %></p>

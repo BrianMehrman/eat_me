@@ -1,0 +1,31 @@
+<!--
+	TODO Create indegredient show page
+-->
+
+<h2>Specific Ingredient For Specific Recipe</h2>
+
+<p id="notcie"><%= notice %></p>
+<p>
+	<b>Created At</b>
+	<%= @ingredient.created_at %>
+</p>
+<p>
+    <b>Update Dated</b>
+	<%=  @ingedient.update_at %>
+</p>
+<p>    <b>Food</b>
+		<%= link_to @ingredient.food.name, food_path(@ingredient.food) %>
+</p> 
+
+<p>
+	<b>Recipe</b>
+	<%= link_to @ingredient.recipe.name, recipe_path(@ingredient.recipe)  %>
+</p>
+<p>    
+	<b>Measurement</b>
+	<%= @ingredient.measurememt %> | <%= @ingredient.unit  %>
+</p>
+
+
+<%= link_to 'Edit', edit_recipe_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', recipe_ingredients_path(@ingredient.recipe) %>

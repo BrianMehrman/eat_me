@@ -26,9 +26,10 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     
-    foods = Food.find(params[:food_ids])
-    
-    foods.each{ |f| @recipe.ingredients.build(:food_id=>f.id) } if foods.size > 0
+    if params[:food_ids]
+      foods = Food.find(params[:food_ids])
+      foods.each{ |f| @recipe.ingredients.build(:food_id =>f.id) } if foods.size > 0
+    end
     
     respond_to do |format|
       format.html # new.html.erb
@@ -39,14 +40,13 @@ class RecipesController < ApplicationController
   # GET /recipes/1/edit
   def edit
     @recipe = Recipe.find(params[:id])
+    #@recipe.ingredients.build
   end
 
   # POST /recipes
   # POST /recipes.json
   def create
     @recipe = Recipe.new(params[:recipe])
-    foods = params[:food_ids]
-    foods.each{ |f| @recipe.ingredients.build(:food_id=>f.id) } if foods.size > 0
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipes_url, notice: 'Recipe was successfully created.' }

@@ -1,0 +1,11 @@
+<!-- TODO Create ingredient index page -->
+<h2>Ingredients for <%= @recipe.name %></h2>
+
+<ul>
+	<% @recipe.ingredients.each do |ingredient| %>
+	<li>
+		<p><%= ingredient.name %> | <%= ingredient.measurement %> <%= ingredient.unit %></p>
+	</li>
+	
+	<%= link_to "Create New", new_recipe_ingredient(@recipe) %>
+</ul>

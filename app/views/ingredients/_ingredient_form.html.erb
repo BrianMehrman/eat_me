@@ -1,0 +1,6 @@
+<tr>
+	<td><%# ingredient_form.text_field :food_name %></td>
+	<td><%= ingredient_form.collection_select :food_id, Food.all, :id, :name, :include_blank => true %></td>
+	<td><%= ingredient_form.number_field :measurement %></td>
+	<%= ingredient_form.hidden_field :id , :value => ingredient_form.object.id %>
+</tr>

@@ -11,7 +11,6 @@ EatMe::Application.routes.draw do
   post "food_collection",  :action=>'create', :controller=>'food_collection'
   
   
-  
   resources :recipes do
     resources :ingredients
   end
